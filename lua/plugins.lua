@@ -31,6 +31,8 @@ require('packer').startup(function()
   use 'onsails/lspkind-nvim'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
 
   -- Git
   use 'lewis6991/gitsigns.nvim'
@@ -66,5 +68,7 @@ require('packer').startup(function()
 
   -- Asynchronous IO
   use 'nvim-neotest/nvim-nio'
-end)
 
+  -- Syntax
+  use 'uarun/vim-protobuf'
+end)

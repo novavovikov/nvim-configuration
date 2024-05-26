@@ -99,6 +99,11 @@ lspconfig.rescriptls.setup {
   cmd = { 'rescript-language-server', '--stdio' },
 }
 
+-- Protocol Buffers
+lspconfig.bufls.setup {
+  capabilities = capabilities,
+}
+
 -- formatter
 formatter.setup({
   filetype = {
