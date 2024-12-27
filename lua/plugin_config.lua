@@ -7,6 +7,67 @@ local lspconfig = require('lspconfig')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local nvim_tree = require('nvim-tree')
 local lualine = require('lualine')
+local mason_lspconfig = require('mason-lspconfig')
+
+-- Configure handlers for LSP servers
+local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+mason_lspconfig.setup({
+  automatic_installation = true
+})
+
+mason_lspconfig.setup_handlers({
+  function(server_name)
+    lspconfig[server_name].setup {
+      capabilities = capabilities,
+    }
+  end,
+  ["gopls"] = function()
+    lspconfig.gopls.setup {
+      capabilities = capabilities,
+      on_attach = function()
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = "*.go",
+          callback = function()
+            vim.lsp.buf.format({ async = false })
+            vim.lsp.buf.code_action({
+              context = { only = { "source.organizeImports" } },
+              apply = true,
+            })
+          end,
+        })
+      end,
+      settings = {
+        gopls = {
+          analyses = { unusedparams = true },
+          staticcheck = true,
+        },
+      },
+    }
+  end,
+  ["lua_ls"] = function()
+    lspconfig.lua_ls.setup {
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          format = { enable = true },
+          diagnostics = { globals = { 'vim', 'use' } },
+          telemetry = { enable = false },
+        },
+      },
+    }
+  end,
+  ["rescriptls"] = function()
+    lspconfig.rescriptls.setup {
+      cmd = { 'rescript-language-server', '--stdio' },
+    }
+  end,
+  ["buf_ls"] = function()
+    lspconfig.buf_ls.setup {
+      capabilities = capabilities,
+    }
+  end,
+})
 
 -- Configuration for dap and dap-ui
 dap.configurations.lua = {
@@ -41,16 +102,9 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    
+    ['<Tab>'] = cmp.mapping.select_next_item(),
+    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+
     ['<Up>'] = cmp.mapping.select_prev_item(),
     ['<Down>'] = cmp.mapping.select_next_item(),
 
@@ -79,61 +133,6 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
-local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
--- LSP settings
--- Go
-lspconfig.gopls.setup {
-  capabilities = capabilities,
-  on_attach = function()
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      pattern = "*.go",
-      callback = function()
-        vim.lsp.buf.format({ async = false })
-        vim.lsp.buf.code_action({
-          context = { only = { "source.organizeImports" } },
-          apply = true
-        })
-      end
-    })
-  end,
-  settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true
-    }
-  },
-}
-
--- Lua
-lspconfig.lua_ls.setup {
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      format = {
-        enable = true,
-      },
-      diagnostics = {
-        globals = { 'vim', 'use' },
-      },
-      telemetry = {
-        enable = false,
-      },
-    }
-  },
-}
--- Rescript
-lspconfig.rescriptls.setup {
-  cmd = { 'rescript-language-server', '--stdio' },
-}
-
--- Protocol Buffers
-lspconfig.bufls.setup {
-  capabilities = capabilities,
-}
 
 -- formatter
 formatter.setup({

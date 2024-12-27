@@ -3,6 +3,16 @@ vim.g.mapleader = " "
 -- Quickly exit insert mode using 'jk'
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true })
 
+-- Move the current line or selected lines down
+vim.keymap.set('n', '<A-Down>', ':m .+1<CR>==', { noremap = true, silent = true })
+vim.keymap.set('i', '<A-Down>', '<Esc>:m .+1<CR>==gi', { noremap = true, silent = true })
+vim.keymap.set('v', '<A-Down>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+
+-- Move the current line or selected lines up
+vim.keymap.set('n', '<A-Up>', ':m .-2<CR>==', { noremap = true, silent = true })
+vim.keymap.set('i', '<A-Up>', '<Esc>:m .-2<CR>==gi', { noremap = true, silent = true })
+vim.keymap.set('v', '<A-Up>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+
 -- Delete a line without saving it to the clipboard
 vim.api.nvim_set_keymap('n', 'dd', '"_dd', { noremap = true, silent = true })
 

@@ -43,7 +43,8 @@ require('packer').startup(function()
   use 'bkad/CamelCaseMotion'
   use 'mg979/vim-visual-multi'
   use 'sainnhe/everforest'
-  use 'LunarWatcher/auto-pairs'
+  use 'nvim-autopairs'
+  use 'numToStr/Comment.nvim'
   use 'mhartington/formatter.nvim'
 
   -- File explorer
