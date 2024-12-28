@@ -8,6 +8,12 @@ end
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
+  -- Syntax highlight
+  use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate'
+  }
+
   -- Autocompletion
   use {
     'hrsh7th/nvim-cmp',
@@ -16,10 +22,15 @@ require('packer').startup(function()
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
+      'saadparwaiz1/cmp_luasnip',
       'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip'
+      'ray-x/cmp-treesitter',
+      'onsails/lspkind-nvim',
+      'hrsh7th/cmp-nvim-lsp-signature-help'
     }
   }
+
+  use('github/copilot.vim')
 
   -- Debugging
   use 'rcarriga/nvim-dap-ui'
@@ -27,12 +38,12 @@ require('packer').startup(function()
   use 'jbyuki/one-small-step-for-vimkind'
 
   -- LSP
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
   use 'onsails/lspkind-nvim'
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
 
   -- Git
   use 'lewis6991/gitsigns.nvim'
@@ -43,9 +54,15 @@ require('packer').startup(function()
   use 'bkad/CamelCaseMotion'
   use 'mg979/vim-visual-multi'
   use 'sainnhe/everforest'
-  use 'nvim-autopairs'
   use 'numToStr/Comment.nvim'
   use 'mhartington/formatter.nvim'
+  use {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+        require("nvim-autopairs").setup {}
+    end
+  }
 
   -- File explorer
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', } }
@@ -60,16 +77,6 @@ require('packer').startup(function()
   -- Themes
   use 'joshdick/onedark.vim'
 
-  -- Rescript
-  use 'rescript-lang/vim-rescript'
-  use 'prettier/vim-prettier'
-
-  -- Coc
-  use 'neoclide/coc.nvim'
-
   -- Asynchronous IO
   use 'nvim-neotest/nvim-nio'
-
-  -- Syntax
-  use 'uarun/vim-protobuf'
 end)
