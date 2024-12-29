@@ -1,0 +1,3 @@
+*.lua linguist-detectable=true
+*.lua linguist-generated=false
+*.lua linguist-language=Lua
