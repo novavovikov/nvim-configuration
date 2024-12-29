@@ -41,7 +41,6 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.close(),
   },
   sources = cmp.config.sources({
-    { name = "copilot" },
     { name = "buffer" },
     { name = 'nvim_lsp' },
     { name = "path" },

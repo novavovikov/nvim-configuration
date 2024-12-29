@@ -7,7 +7,6 @@ nvim_tree.setup {
   open_on_tab = true,
   update_focused_file = {
     enable = true,
-    update_cwd = true,
   },
   git = {
     enable = true,
@@ -16,6 +15,14 @@ nvim_tree.setup {
   view = {
     width = 40,
     side = 'left',
-    preserve_window_proportions = true
-  }
+    preserve_window_proportions = false
+  },
+  renderer = {
+    root_folder_label = false,
+  },
+  actions = {
+    open_file = {
+      quit_on_open = false,
+    },
+  },
 }

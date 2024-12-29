@@ -10,8 +10,8 @@ require('packer').startup(function()
 
   -- Syntax highlight
   use {
-      'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate'
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
   }
 
   -- Autocompletion
@@ -60,23 +60,26 @@ require('packer').startup(function()
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = function()
-        require("nvim-autopairs").setup {}
+      require("nvim-autopairs").setup {}
     end
   }
-
-  -- File explorer
-  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', } }
-
-  -- Fuzzy finder
-  use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
-  -- Status line
-  use { 'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons', opt = true } }
 
   -- Themes
   use 'joshdick/onedark.vim'
 
+  -- File explorer
+  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', } }
+
+  -- Status line
+  use { 'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons', opt = true } }
+
+  -- Files finder
+  use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {
+    "nvim-telescope/telescope-frecency.nvim",
+    requires = { "kkharji/sqlite.lua" }
+  }
   -- Asynchronous IO
   use 'nvim-neotest/nvim-nio'
 end)

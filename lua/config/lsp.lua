@@ -9,18 +9,10 @@ mason.setup()
 
 mason_lspconfig.setup({
   automatic_installation = false,
+  capabilities = capabilities,
   handlers = {
     ["gopls"] = function()
-      capabilities = capabilities,
       lspconfig.gopls.setup {
-        on_attach = function()
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            pattern = "*.go",
-            callback = function()
-              vim.lsp.buf.format({ async = false })
-            end,
-          })
-        end,
         cmd = { "gopls" },
         filetypes = { "go", "gomod", "gowork", "gotmpl" },
         root_dir = lsp_util.root_pattern("go.mod"),
@@ -36,11 +28,10 @@ mason_lspconfig.setup({
     end,
     ["lua_ls"] = function()
       lspconfig.lua_ls.setup {
-        filetype = { "lua" },
+        filetypes = { "lua" },
         capabilities = capabilities,
         settings = {
           Lua = {
-            format = { enable = true },
             diagnostics = { globals = { 'vim', 'use' } },
             telemetry = { enable = false },
           },
@@ -65,12 +56,10 @@ mason_lspconfig.setup({
         root_dir = lsp_util.root_pattern("compile_commands.json", ".git"),
         settings = {
           clangd = {
-            fallbackFlags = { "-std=c++17" } -- Укажите стандарт, если необходимо
+            fallbackFlags = { "-std=c++17" }
           },
         },
       }
     end,
   }
 })
-
-

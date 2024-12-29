@@ -1,4 +1,7 @@
--- SETTINGS
+vim.g.copilot_enabled = false
+
+vim.g.nvim_tree_auto_close = 0
+
 -- Text encoding and interface performance settings
 vim.o.encoding = 'utf-8'
 vim.o.ttyfast = true
@@ -12,8 +15,8 @@ vim.o.clipboard = vim.o.clipboard .. 'unnamedplus'
 vim.wo.number = true
 vim.wo.list = true
 vim.opt.listchars = {
-	tab = '»·',
-	space = "·",
+  tab = '»·',
+  space = "·",
 }
 vim.wo.signcolumn = 'yes'
 vim.wo.cursorline = true
@@ -61,5 +64,5 @@ vim.cmd('filetype plugin indent on')
 
 -- Support for Russian keyboard layout for commands
 vim.cmd(
-	[[set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz]]
+  [[set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz]]
 )

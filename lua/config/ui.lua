@@ -1,5 +1,6 @@
 local lualine = require('lualine')
 
+-- Status line
 lualine.setup {
   options = {
     icons_enabled = true,
@@ -52,4 +53,3 @@ lualine.setup {
     lualine_z = {}
   },
 }
-
