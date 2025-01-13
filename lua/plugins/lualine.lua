@@ -1,7 +1,4 @@
-local lualine = require('lualine')
-
--- Status line
-lualine.setup {
+require("lualine").setup {
   options = {
     icons_enabled = true,
     theme = 'codedark',

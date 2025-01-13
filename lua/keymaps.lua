@@ -44,9 +44,13 @@ vim.keymap.set('n', '<Leader>fo', ':Telescope oldfiles<CR>', { noremap = true, s
 vim.keymap.set('n', '<Leader>fb', ':Telescope buffers<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>fr', ':Telescope frecency<CR>', { noremap = true, silent = true })
 
--- Resize the current window vertically
-vim.api.nvim_set_keymap('n', '<Leader>+', ':vertical resize +5<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>-', ':vertical resize -5<CR>', { noremap = true, silent = true })
+-- Resize windows vertically
+vim.api.nvim_set_keymap('n', '<Leader><Down>', ':resize +3<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader><Up>', ':resize -3<CR>', { noremap = true, silent = true })
+
+-- Resize windows horizontally
+vim.api.nvim_set_keymap('n', '<Leader><Right>', ':vertical resize -3<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader><Left>', ':vertical resize +3<CR>', { noremap = true, silent = true })
 
 -- Shift code block right with Tab and left with Shift+Tab
 vim.keymap.set('v', '<Tab>', '>gv', { noremap = true, silent = true })

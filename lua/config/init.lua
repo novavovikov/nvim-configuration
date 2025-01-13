@@ -1,8 +1,0 @@
-require("config.autocomplete")
-require("config.debug")
-require("config.filetree")
-require("config.formatter")
-require("config.highlight")
-require("config.lsp")
-require("config.telescope")
-require("config.ui")

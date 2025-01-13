@@ -1,3 +1,13 @@
+require("plugins.cmp")
+require("plugins.dap")
+require("plugins.formatter")
+require("plugins.lsp")
+require("plugins.lualine")
+require("plugins.nvim_tree")
+require("plugins.persisted")
+require("plugins.telescope")
+require("plugins.treesitter")
+
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -7,6 +17,9 @@ end
 
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
+
+  -- Sessions
+  use { "olimorris/persisted.nvim" }
 
   -- Syntax highlight
   use {
@@ -65,7 +78,7 @@ require('packer').startup(function()
   }
 
   -- Themes
-  use 'joshdick/onedark.vim'
+  use 'sainnhe/sonokai'
 
   -- File explorer
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', } }

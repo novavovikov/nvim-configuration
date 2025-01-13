@@ -10,15 +10,22 @@ nvim_tree.setup {
   },
   git = {
     enable = true,
+    ignore = false,
     timeout = 500,
   },
   view = {
-    width = 40,
+    width = 30,
     side = 'left',
-    preserve_window_proportions = false
+    preserve_window_proportions = false,
   },
   renderer = {
+    highlight_git = true,
     root_folder_label = false,
+    icons = {
+      show = {
+        git = true,
+      },
+    },
   },
   actions = {
     open_file = {

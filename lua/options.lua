@@ -14,10 +14,6 @@ vim.o.clipboard = vim.o.clipboard .. 'unnamedplus'
 -- UI display settings
 vim.wo.number = true
 vim.wo.list = true
-vim.opt.listchars = {
-  tab = '»·',
-  space = "·",
-}
 vim.wo.signcolumn = 'yes'
 vim.wo.cursorline = true
 vim.opt.mouse = "a"
@@ -58,9 +54,10 @@ vim.o.splitbelow = true
 vim.o.autowrite = true
 
 -- Appearance settings and syntax enabling
-vim.cmd('colorscheme onedark')
+vim.opt.cmdheight = 1
 vim.cmd('syntax on')
 vim.cmd('filetype plugin indent on')
+vim.cmd('colorscheme sonokai')
 
 -- Support for Russian keyboard layout for commands
 vim.cmd(
