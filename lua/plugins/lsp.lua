@@ -94,5 +94,38 @@ return {
 				end,
 			},
 		})
+
+		-- LSP keymaps
+		vim.api.nvim_set_keymap(
+			"n",
+			"<Leader>.",
+			"<Cmd>lua vim.lsp.buf.definition()<CR>",
+			{ noremap = true, silent = true }
+		)
+		vim.api.nvim_set_keymap(
+			"n",
+			"<Leader>,",
+			"<Cmd>lua vim.lsp.buf.declaration()<CR>",
+			{ noremap = true, silent = true }
+		)
+		vim.api.nvim_set_keymap(
+			"n",
+			"<Leader>;",
+			"<Cmd>lua vim.lsp.buf.implementation()<CR>",
+			{ noremap = true, silent = true }
+		)
+		vim.api.nvim_set_keymap(
+			"n",
+			"<Leader>r",
+			"<Cmd>lua vim.lsp.buf.rename()<CR>",
+			{ noremap = true, silent = true }
+		)
+		vim.api.nvim_set_keymap(
+			"n",
+			"<Leader>c",
+			"<Cmd>lua vim.lsp.buf.code_action()<CR>",
+			{ noremap = true, silent = true }
+		)
+		vim.api.nvim_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
 	end,
 }

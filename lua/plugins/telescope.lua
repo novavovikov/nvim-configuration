@@ -57,5 +57,11 @@ return {
 
 		pcall(telescope.load_extension, "fzf")
 		pcall(telescope.load_extension, "frecency")
+
+		vim.keymap.set("n", "<Leader>ff", ":Telescope find_files<CR>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<Leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<Leader>fo", ":Telescope oldfiles<CR>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<Leader>fb", ":Telescope buffers<CR>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<Leader>fr", ":Telescope frecency<CR>", { noremap = true, silent = true })
 	end,
 }
