@@ -1,6 +1,6 @@
 return {
 	"nvim-tree/nvim-tree.lua",
-	dependencies = { "nvim-tree/nvim-web-devicons" }, -- For file icons
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		require("nvim-tree").setup({
 			update_cwd = true,
