@@ -48,6 +48,7 @@ vim.o.completeopt = 'menu,menuone,noselect'
 vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
+vim.o.hidden = true
 
 -- Additional visual and command enhancements
 vim.o.splitbelow = true

@@ -5,6 +5,15 @@ local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_cli
 
 require("mason").setup()
 
+require("mason-tool-installer").setup({
+  ensure_installed = {
+    "prettier",
+    "stylua",
+  },
+  auto_update = true,
+  run_on_start = true,
+})
+
 require('mason-lspconfig').setup({
   automatic_installation = false,
   capabilities = capabilities,
