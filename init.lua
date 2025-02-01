@@ -1,4 +1,4 @@
-require("plugins")
 require("keymaps")
-require("autocommands")
+require("plugins-bootstrap")
 require("options")
+require("autocommands")

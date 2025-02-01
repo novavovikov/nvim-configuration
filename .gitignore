@@ -1,7 +1,7 @@
 .swp
 .DS_Store
 
+lazy-lock.json
+
 autoload/
-packer.nvim/
-plugin/
 
