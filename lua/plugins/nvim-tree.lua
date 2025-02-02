@@ -36,6 +36,6 @@ return {
 			},
 		})
 
-		vim.api.nvim_set_keymap("n", "<Leader><S-f>", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<Leader><S-f>", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
 	end,
 }
